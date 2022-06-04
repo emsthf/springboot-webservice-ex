@@ -1,16 +1,18 @@
+// 자바와 스프링부트를 사용하기위한 필수 플러그인
 plugins { // (1)
     id 'org.springframework.boot' version '2.4.1' // RELEASE 삭제
-    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE' // 스프링부트 의존성들을 관리해주는 플러그인
     id 'java'
 }
 
-group 'com.jojoldu.book'
+// 그룹과 빌드 파일 이름
+group 'com.emsthf.springboot'
 version '1.0.4-SNAPSHOT-'+new Date().format("yyyyMMddHHmmss")
 sourceCompatibility = 1.8
 
+// 의존성(라이브러리)를 어떤 원격 저장소에서 받을 것인지
 repositories {
     mavenCentral()
-    jcenter()
 }
 
 // for Junit 5
