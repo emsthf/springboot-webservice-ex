@@ -6,7 +6,7 @@ plugins { // (1)
 }
 
 // 그룹과 빌드 파일 이름
-group 'com.emsthf.springboot'
+group 'com.emsthf.webserv'
 version '1.0.4-SNAPSHOT-'+new Date().format("yyyyMMddHHmmss")
 sourceCompatibility = 1.8
 
