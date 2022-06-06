@@ -2,12 +2,16 @@ package com.emsthf.webserv.springboot.service.posts;
 
 import com.emsthf.webserv.springboot.domain.posts.Posts;
 import com.emsthf.webserv.springboot.domain.posts.PostsRepository;
+import com.emsthf.webserv.springboot.web.dto.PostsListResponseDto;
 import com.emsthf.webserv.springboot.web.dto.PostsResponseDto;
 import com.emsthf.webserv.springboot.web.dto.PostsSaveRequestDto;
 import com.emsthf.webserv.springboot.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -32,8 +36,27 @@ public class PostsService {
         // = Entity 객체의 값만 변경하면 별도로 Update 쿼리를 날릴 필요가 없음 = '더티 체킹'
     }
 
+    @Transactional(readOnly = true)
     public PostsResponseDto findById(Long id) {
-        Posts entity = postsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id=" + id));
+        Posts entity = postsRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id=" + id));
         return new PostsResponseDto(entity);
+    }
+
+    @Transactional(readOnly = true) // 트랜젝션 범위는 유지하되, 조회 기능만 남겨둬서 조회 속도 개선
+    public List<PostsListResponseDto> findAllDesc() {
+        return postsRepository.findAllDesc().stream()
+                .map(PostsListResponseDto::new)
+                .collect(Collectors.toList());
+        // .map(PostsListResponseDto::new)는 람다식 표현
+        // = .map(posts -> new PostsListResponseDto(posts))와 같은 표현
+        // posts 형식의 List로 리턴 받은 쿼리 결과를 PostsListResponseDto 형식의 List로 변형하는 메소드
+    }
+
+    @Transactional
+    public void delete (Long id) {
+        Posts posts = postsRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 사용자가 없습니다. id=" + id));
+        postsRepository.delete(posts);
     }
 }

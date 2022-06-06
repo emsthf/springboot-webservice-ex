@@ -4,12 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="61f2f762-ea6e-4c82-adf3-a3e31197c198" name="변경" comment="FEAT: Posts CRU with JPA&#10;1. 포스트 엔티티 추가&#10;2. JPA로 CRU 기능 구현 + H2 DB">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/emsthf/webserv/springboot/domain/BaseTimeEntity.java" afterDir="false" />
+    <list default="true" id="61f2f762-ea6e-4c82-adf3-a3e31197c198" name="변경" comment="FEAT: connect MySQL&#10;1. JPA Auditing으로 생성/수정시간 자동화 추가&#10;2. H2 DB -&gt; MySQL로 교체">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/emsthf/webserv/springboot/web/IndexController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/emsthf/webserv/springboot/web/dto/PostsListResponseDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/app/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/index.mustache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/layout/footer.mustache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/layout/header.mustache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/posts-save.mustache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/posts-update.mustache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/emsthf/webserv/springboot/web/IndexControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/emsthf/webserv/springboot/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/emsthf/webserv/springboot/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/emsthf/webserv/springboot/domain/posts/Posts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/emsthf/webserv/springboot/domain/posts/Posts.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/emsthf/webserv/springboot/domain/posts/PostsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/emsthf/webserv/springboot/domain/posts/PostsRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/emsthf/webserv/springboot/service/posts/PostsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/emsthf/webserv/springboot/service/posts/PostsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/emsthf/webserv/springboot/web/PostsApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/emsthf/webserv/springboot/web/PostsApiController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -96,15 +106,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;모듈&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "project.structure.last.edited": "모듈",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="애플리케이션.Application">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.emsthf.webserv.springboot.Application" />
@@ -119,7 +129,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HelloControllerTest.helloDto가_리턴된다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="IndexControllerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -132,7 +142,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;com.emsthf.webserv.springboot.web.HelloControllerTest.helloDto가_리턴된다&quot;" />
+            <option value="&quot;com.emsthf.webserv.springboot.web.IndexControllerTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -142,7 +152,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="HelloResponseDtoTest.롬복_기능_테스트" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="IndexControllerTest.메인페이지_로딩" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -155,7 +165,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;com.emsthf.webserv.springboot.web.dto.HelloResponseDtoTest.롬복_기능_테스트&quot;" />
+            <option value="&quot;com.emsthf.webserv.springboot.web.IndexControllerTest.메인페이지_로딩&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -188,36 +198,29 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="PostsRepositoryTest.게시글저장_불러오기" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;com.emsthf.webserv.springboot.domain.posts.PostsRepositoryTest.게시글저장_불러오기&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
+    <configuration name="IndexControllerTest.메인페이지_로딩" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="springboot2-webservice.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.emsthf.webserv.springboot.web.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.emsthf.webserv.springboot.web" />
+      <option name="MAIN_CLASS_NAME" value="com.emsthf.webserv.springboot.web.IndexControllerTest" />
+      <option name="METHOD_NAME" value="메인페이지_로딩" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.PostsRepositoryTest" />
-        <item itemvalue="Gradle.PostsRepositoryTest.게시글저장_불러오기" />
-        <item itemvalue="Gradle.HelloControllerTest.helloDto가_리턴된다" />
-        <item itemvalue="Gradle.HelloResponseDtoTest.롬복_기능_테스트" />
         <item itemvalue="애플리케이션.Application" />
+        <item itemvalue="JUnit.IndexControllerTest.메인페이지_로딩" />
+        <item itemvalue="Gradle.IndexControllerTest.메인페이지_로딩" />
+        <item itemvalue="Gradle.IndexControllerTest" />
+        <item itemvalue="Gradle.PostsRepositoryTest" />
       </list>
     </recent_temporary>
   </component>
@@ -258,7 +261,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654434930659</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="FEAT: connect MySQL&#10;1. JPA Auditing으로 생성/수정시간 자동화 추가&#10;2. H2 DB -&gt; MySQL로 교체">
+      <created>1654444260498</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1654444260498</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -276,6 +286,7 @@
     <MESSAGE value="FIX: setting gitignore" />
     <MESSAGE value="FEAT: check Test code" />
     <MESSAGE value="FEAT: Posts CRU with JPA&#10;1. 포스트 엔티티 추가&#10;2. JPA로 CRU 기능 구현 + H2 DB" />
-    <option name="LAST_COMMIT_MESSAGE" value="FEAT: Posts CRU with JPA&#10;1. 포스트 엔티티 추가&#10;2. JPA로 CRU 기능 구현 + H2 DB" />
+    <MESSAGE value="FEAT: connect MySQL&#10;1. JPA Auditing으로 생성/수정시간 자동화 추가&#10;2. H2 DB -&gt; MySQL로 교체" />
+    <option name="LAST_COMMIT_MESSAGE" value="FEAT: connect MySQL&#10;1. JPA Auditing으로 생성/수정시간 자동화 추가&#10;2. H2 DB -&gt; MySQL로 교체" />
   </component>
 </project>
